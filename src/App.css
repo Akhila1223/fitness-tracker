@@ -1,0 +1,790 @@
+
+/* ==============================
+   GLOBAL LAYOUT
+================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #363636;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  padding: 26px;
+}
+
+/* ==============================
+   HEADER
+================================ */
+
+.header {
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 34px;
+  font-weight: 700;
+  margin: 10px 0 18px;
+  color: white;
+}
+
+/* ==============================
+   DASHBOARD
+================================ */
+
+.dashboard {
+  display: flex;
+  align-items: stretch;
+  gap: 40px;
+
+  background-color: #626262;
+  padding: 52px;
+  border-radius: 12px;
+}
+
+/* ==============================
+   TODAY'S DATA
+================================ */
+
+.today-data {
+  flex: 1;
+  min-width: 0;
+  min-height: 380px;
+
+  background-color: #999999;
+  border-radius: 16px;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  text-align: center;
+}
+
+.today-data h2 {
+  font-size: 30px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.today-data button {
+  background-color: #4caf50;
+  color: white;
+
+  border: none;
+  border-radius: 5px;
+
+  padding: 14px 22px;
+  font-size: 18px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.today-data button:hover {
+  background-color: #439a46;
+}
+
+/* ==============================
+   WEEKLY HEALTH TRENDS
+================================ */
+
+.weekly-trends {
+  flex: 2;
+  min-width: 0;
+}
+
+/* ==============================
+   STATISTICS SECTION
+================================ */
+
+.statistics {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.recent-statistics {
+  flex: 2;
+  min-width: 0;
+}
+
+.overall-data {
+  flex: 1;
+  min-width: 0;
+}
+
+.statistics h2 {
+  font-size: 26px;
+  font-style: italic;
+  font-weight: 600;
+  margin: 0 0 24px;
+}
+
+/* ==============================
+   RECENT HEALTH RECORDS
+================================ */
+
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.record-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  background-color: #626262;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.record-details {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.record-details h3 {
+  font-size: 20px;
+  margin: 0 0 12px;
+}
+
+.record-details p {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 6px 0;
+}
+
+/* ==============================
+   EDIT / DELETE BUTTONS
+================================ */
+
+.record-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.record-actions button {
+  padding: 10px 14px;
+
+  border: none;
+  border-radius: 5px;
+
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.record-actions button:hover {
+  opacity: 0.85;
+}
+
+.record-actions button:first-child {
+  background-color: #2196f3;
+}
+
+.record-actions button:last-child {
+  background-color: #e53935;
+}
+
+/* ==============================
+   MODAL OVERLAY
+================================ */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 16px;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  z-index: 1000;
+}
+
+/* ==============================
+   MODAL CONTENT
+================================ */
+
+.modal-content {
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  background-color: #ffffff;
+  color: #222222;
+
+  padding: 28px;
+  border-radius: 12px;
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2 {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+
+  margin: 0 0 24px;
+}
+
+/* ==============================
+   MODAL FORM
+================================ */
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-content label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 12px;
+
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+
+  background-color: white;
+  color: #222222;
+
+  font-size: 15px;
+  font-family: inherit;
+
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.modal-content input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.15);
+}
+
+.modal-content input::placeholder {
+  color: #888888;
+}
+
+/* ==============================
+   FORM VALIDATION
+================================ */
+
+.form-error {
+  color: #d32f2f;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 4px 0;
+}
+
+/* ==============================
+   MODAL ACTION BUTTONS
+================================ */
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 16px;
+}
+
+.modal-actions button {
+  padding: 11px 20px;
+
+  border: none;
+  border-radius: 6px;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-actions button[type="button"] {
+  background-color: #e5e5e5;
+  color: #333333;
+}
+
+.modal-actions button[type="button"]:hover {
+  background-color: #d5d5d5;
+}
+
+.modal-actions button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+}
+
+.modal-actions button[type="submit"]:hover {
+  background-color: #439a46;
+}
+
+
+/* ==============================
+   OVERALL DATA PIE CHART
+================================ */
+
+.pie-chart-container {
+  width: 100%;
+  min-height: 320px;
+  background-color: #626262;
+  border-radius: 12px;
+  padding: 20px 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pie-empty-state {
+  width: 100%;
+  min-height: 280px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.empty-pie {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-color: #bdbdbd;
+  border: 2px solid #999999;
+}
+
+.pie-empty-state p {
+  color: #eeeeee;
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .pie-chart-container {
+    min-height: 280px;
+    padding: 12px;
+  }
+
+  .empty-pie {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+
+/* ==============================
+   WEEKLY HEALTH TRENDS
+================================ */
+
+.weekly-trends {
+  flex: 2;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.weekly-trends h2 {
+  font-size: 25px;
+  font-weight: 600;
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+.weekly-chart-container {
+  width: 100%;
+  min-width: 0;
+  height: 340px;
+}
+
+@media (max-width: 600px) {
+  .weekly-trends {
+    width: 100%;
+  }
+
+  .weekly-trends h2 {
+    font-size: 21px;
+  }
+
+  .weekly-chart-container {
+    height: 320px;
+  }
+}
+
+
+/* ==============================
+   REFERENCE UI ADJUSTMENTS
+================================ */
+
+.dashboard {
+  gap: 70px;
+  padding: 52px;
+}
+
+.today-data {
+  min-height: 380px;
+}
+
+.weekly-trends {
+  flex: 2;
+}
+
+.weekly-trends h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.weekly-chart-container {
+  height: 300px;
+}
+
+.weekly-empty {
+  text-align: center;
+  color: #eeeeee;
+  padding: 80px 0;
+}
+
+/* Statistics columns */
+
+.statistics {
+  align-items: flex-start;
+  gap: 55px;
+}
+
+.statistics h2 {
+  font-style: italic;
+  font-size: 27px;
+  margin-bottom: 24px;
+}
+
+/* Recent Statistics */
+
+.records-list {
+  background-color: #ffffff;
+  color: #222222;
+  border-radius: 12px;
+  padding: 24px 26px;
+  gap: 0;
+  min-height: 150px;
+}
+
+.record-card {
+  background: transparent;
+  border-radius: 0;
+  border-bottom: 1px solid #bbbbbb;
+  padding: 12px 0;
+  gap: 16px;
+}
+
+.record-card:last-child {
+  border-bottom: none;
+}
+
+.record-description {
+  font-size: 16px !important;
+  color: #111111;
+  margin-bottom: 5px !important;
+}
+
+.record-calories {
+  color: #999999;
+  font-size: 16px !important;
+  margin: 0 !important;
+}
+
+.record-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.record-date {
+  color: #f5aa22;
+  font-size: 16px;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.record-actions button {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.record-actions button.delete-btn {
+  background-color: #ff3b3b;
+}
+
+.record-actions button.edit-btn {
+  background-color: #f7b943;
+}
+
+/* Pie chart */
+
+.pie-chart-container {
+  background: transparent;
+  padding: 0;
+  min-height: 300px;
+}
+
+.empty-pie {
+  background-color: #bdbdbd;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .dashboard {
+    gap: 24px;
+    padding: 30px;
+  }
+
+  .statistics {
+    gap: 24px;
+  }
+
+  .record-card {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .record-actions {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard {
+    flex-direction: column;
+    padding: 20px;
+    gap: 24px;
+  }
+
+  .today-data {
+    min-height: 250px;
+  }
+
+  .statistics {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .recent-statistics,
+  .overall-data {
+    width: 100%;
+  }
+
+  .records-list {
+    padding: 16px;
+  }
+
+  .record-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .record-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .record-actions button {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+
+  .record-date {
+    margin-right: auto;
+    font-size: 13px;
+  }
+
+  .record-calories {
+    font-size: 14px !important;
+  }
+
+  .weekly-chart-container {
+    height: 280px;
+  }
+}
+
+
+/* ==============================
+   TABLET RESPONSIVENESS
+================================ */
+
+@media (max-width: 900px) {
+  .app {
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 30px;
+  }
+
+  .dashboard {
+    padding: 30px;
+    gap: 24px;
+  }
+
+  .today-data {
+    min-height: 300px;
+  }
+
+  .today-data h2 {
+    font-size: 24px;
+  }
+
+  .statistics {
+    gap: 24px;
+  }
+
+  .record-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .record-actions {
+    justify-content: flex-end;
+  }
+}
+
+/* ==============================
+   MOBILE RESPONSIVENESS
+================================ */
+
+@media (max-width: 600px) {
+  .app {
+    padding: 16px;
+  }
+
+  .header h1 {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+
+  .dashboard {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .today-data {
+    min-height: 250px;
+    padding: 20px;
+  }
+
+  .today-data h2 {
+    font-size: 23px;
+  }
+
+  .today-data button {
+    font-size: 16px;
+    padding: 12px 18px;
+  }
+
+  .weekly-trends {
+    width: 100%;
+  }
+
+  .statistics {
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+  }
+
+  .recent-statistics,
+  .overall-data {
+    width: 100%;
+  }
+
+  .statistics h2 {
+    font-size: 23px;
+  }
+
+  .record-card {
+    padding: 16px;
+  }
+
+  .record-details h3 {
+    font-size: 18px;
+  }
+
+  .record-details p {
+    font-size: 14px;
+  }
+
+  .record-actions {
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .modal-overlay {
+    padding: 12px;
+  }
+
+  .modal-content {
+    padding: 20px;
+    max-height: 90vh;
+  }
+
+  .modal-content h2 {
+    font-size: 21px;
+  }
+
+  .modal-content input {
+    font-size: 16px;
+  }
+
+  .modal-actions {
+    gap: 10px;
+  }
+
+  .modal-actions button {
+    flex: 1;
+  }
+}
